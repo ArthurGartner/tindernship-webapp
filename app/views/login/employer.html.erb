@@ -1,0 +1,24 @@
+<div class="section" id="student-login">
+    <div class="box">
+        <h1 class="title">Employer Login</h1>
+        <hr/>
+        <div class="form">
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" id="password" type="password" required>
+                </div>
+            </div>
+            <div id="two-buttons">
+                <div class="field">
+                    <button class="button is-success" id="login">Login</button>
+                    <button class="button is-primary">Forgot Password</button>
+                </div>
+            </div>
+            <br>
+            <div id="csrf"><%= form_authenticity_token %></div>
+        </div>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'employerlogin' %>

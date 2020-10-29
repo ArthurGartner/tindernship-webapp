@@ -1,0 +1,33 @@
+<div class="section" id="student-login">
+    <div class="box">
+        <h1 class="title">Student Login</h1>
+        <hr/>
+        <div class="form">
+            <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                    <input class="input" type="text" id="username" placeholder="Username" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" id="password" type="password" required>
+                </div>
+            </div>
+            <div id="two-buttons">
+                <div class="field">
+                    <button class="button is-success" id="login">Login</button>
+                    <button class="button is-primary">Forgot Password</button>
+                </div>
+            </div>
+            <br>
+            <div class="field">
+                <button id="register" class="button is-info" onClick="document.location='/register'">Register</button>
+            </div>
+            <div id="csrf"><%= form_authenticity_token %></div>
+        </div>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'studentlogin' %>

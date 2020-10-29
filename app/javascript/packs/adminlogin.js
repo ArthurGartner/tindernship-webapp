@@ -4,7 +4,7 @@ $("#login").on("click", function() {
 
     $.ajax({
         type: "POST",
-        url: "/login/employer?&authenticity_token=" + encodeURIComponent(token),
+        url: "/admin?&authenticity_token=" + encodeURIComponent(token),
         data: {password: password},
         success: function(data) {
             if (!!data.msg) {

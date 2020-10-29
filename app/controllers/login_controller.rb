@@ -11,15 +11,22 @@ class LoginController < ApplicationController
     def employer
     end
 
+    def admin
+    end
+
     def poststudent
-        render json: "Invalid username or password"
+        render json: {msg: "Invalid username or password"}
     end
 
     def postregister
-        render json: "Username is already taken"
+        render json: {msg: "Username is already taken"}
     end
 
     def postemployer
-        render json: "Invalid password"
+        render json: {msg: "Invalid password"}
+    end
+
+    def postadmin
+        render json: {msg: "Invalid password"}
     end
 end

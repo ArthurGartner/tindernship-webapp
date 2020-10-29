@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post "/register", to: "login#postregister"
   get "/login/employer", to: "login#employer"
   post "/login/employer", to: "login#postemployer"
+  get "/admin", to: "login#admin"
+  post "/admin", to: "login#postadmin"
 end

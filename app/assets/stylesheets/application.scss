@@ -10,9 +10,9 @@ body {
     background-color: #C0E4F1;
 }
 
-#welcome-hero, #student-login {
+#welcome-hero, #student-login, #admin-login, #employer-login {
     top: 15%;
-    height: 500px;
+    min-height: 500px;
     >.box {
         width: 50%;
         background-color: #f1edee;
@@ -23,9 +23,15 @@ body {
             text-align: center;
         }
     }
+    .notification {
+        display: none;
+        p {
+            text-align: center;
+        }
+    }
 }
 
-#student-login {
+#student-login, #employer-login {
     #two-buttons {
         width: 100%;
         button {
@@ -44,4 +50,10 @@ body {
 
 #csrf {
     display: none;
+}
+
+#admin-login {
+    #login {
+        width: 100%;
+    }
 }

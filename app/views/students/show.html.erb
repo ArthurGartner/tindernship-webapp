@@ -1,0 +1,12 @@
+<h4> Profile for <%= @student.name %></h4>
+<ul>
+  <li>
+    Expected graduation year:
+    <%= @student.graduation_year %>
+  </li>
+  <li>
+    Additional information:
+    <%= @student.additional_information %>
+  </li>
+</ul>
+<%= link_to 'Edit', edit_student_path(@student), :class => 'btn btn-primary col-2' %>

@@ -252,10 +252,6 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 
-When /^(?:|I ) am on the profile page for (.*)$/ do |student_name|
-  visit student_path(Student.find_by_name(student_name))
-end
-
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)

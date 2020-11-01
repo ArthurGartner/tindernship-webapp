@@ -7,11 +7,11 @@ Feature: update student information from student form
 Background: student is logged into their account
   Given the following student account is created:
 
-  | name     |graduation_year|additional_information|
-  | John Doe |2021           |test|
+  | firstName |graduationYear|bioText|
+  | John      |2021          |test   |
 
-  When I am on the profile page for John Doe
-  Then I should see "John Doe"
+  When I am on the profile page for John
+  Then I should see "John"
   And I should see "2021"
 
 Scenario: update graduation year

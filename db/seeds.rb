@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 more_students = [
-  {:name => 'test1', :graduation_year => '2020'}
+  {:firstName => 'John',  :lastName => 'Doe', :graduationMonth => 6,
+  :graduationYear => 2021, :bioText => 'Sample Text', :locationPreference1 => 'Charleston, SC',
+  :fullTime => false, :partTime => true}
 ]
 
 more_students.each do |student|

@@ -10,8 +10,11 @@ Background: student is logged into their account
   | name     |graduation_year|additional_information|
   | John Doe |2021           |test|
 
-  And I am on the John's profile page
-  Then I should see the "Edit" button
+  When I am on the profile page for John Doe
+  Then I should see "John Doe"
+  And I should see "2021"
 
-Scenario: update graduation year from 2021 to 2022
-  When I check the following
+Scenario: update graduation year
+  When I follow "edit_student"
+  And I enter "2022" into the "student_graduation_year" text box
+  And I press "update_student"

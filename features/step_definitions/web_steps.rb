@@ -267,9 +267,4 @@ end
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
-
-When /^(?:|I )enter "([^"]*)" into the "([^"]*)" text box$/ do |value, fieldname|
-  fill_in fieldname, :with => value
-end
-
 end

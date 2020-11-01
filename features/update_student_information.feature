@@ -15,6 +15,6 @@ Background: student is logged into their account
   And I should see "2021"
 
 Scenario: update graduation year
-  When I follow "edit_student"
-  And I enter "2022" into the "student_graduation_year" text box
-  And I press "update_student"
+  When I follow "Edit"
+  And I fill in "student_graduationYear" with "2022"
+  And I press "Update"

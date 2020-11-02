@@ -1,0 +1,46 @@
+<h4> Profile for <%= @student.firstName %> <%= @student.lastName%> </h4>
+<ul style="list-style-type:none;">
+  <li>
+    <div>
+      Expected graduation date:
+      <%= @student.graduationMonth%> <%= @student.graduationYear%>
+    </div>
+  </li>
+  <li>
+    Additional information:
+    <%= @student.bioText %>
+  </li>
+  <li>
+    <div>
+      Location preferences:
+      <%= @student.locationPreference1 %>
+      <%= @student.locationPreference2 %>
+      <%= @student.locationPreference3 %>
+    </div>
+  </li>
+  <li>
+    <div>
+      Available full-time:
+      <% if @student.fullTime %>
+      Yes
+      <% else %>
+      No
+      <% end %>
+    </div>
+  </li>
+  <li>
+    <div>
+    Available part-time:
+    <% if @student.partTime %>
+    Yes
+    <% else %>
+    No
+    <% end %>
+    </div>
+  </li>
+  <li>
+    <%= @student.resumeLink %>
+  </li>
+
+</ul>
+<%= link_to 'Edit', edit_student_path(@student), :class => 'btn btn-primary col-2'%>

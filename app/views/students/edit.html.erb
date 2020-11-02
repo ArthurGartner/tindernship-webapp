@@ -1,0 +1,38 @@
+<h4> Editing <%= @student.firstName %> <%= @student.lastName %>'s profile</h4>
+<%= form_tag(student_path(@student), method: "put") do %>
+  <ul style="list-style-type:none;">
+    <li>
+      <%= label :student, :graduationMonth, 'Graduation Month' %>
+      <%= text_field :student, :graduationMonth %>
+    </li>
+    <li>
+      <%= label :student, :graduationYear, 'Graduation Year' %>
+      <%= text_field :student, :graduationYear %>
+    </li>
+    <li>
+      <%= label :student, :bioText, 'Additional information' %>
+      <%= text_area :student, :bioText %>
+    </li>
+    <li>
+      <%= label :student, :locationPreference1, 'Location preference 1:' %>
+      <%= text_field :student, :locationPreference1 %>
+    </li>
+    <li>
+      <%= label :student, :locationPreference2, 'Location preference 2:' %>
+      <%= text_field :student, :locationPreference2 %>
+    </li>
+    <li>
+      <%= label :student, :locationPreference3, 'Location preference 3:' %>
+      <%= text_field :student, :locationPreference3 %>
+    </li>
+    <li>
+      <%= label :student, :fullTime, 'Full time:' %>
+      <%= check_box :student, :fullTime %>
+    </li>
+    <li>
+      <%= label :student, :partTime, 'Part time:' %>
+      <%= check_box :student, :partTime %>
+    </li>
+  <%= submit_tag("Update") %>
+  </ul>
+<% end %>

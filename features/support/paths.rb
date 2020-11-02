@@ -32,6 +32,14 @@ module NavigationHelpers
     when /^the admin login page$/
       '/admin'
 
+        
+    # I go to the student dashboad page
+    when /^the student dashboard page$/ then '/dashboard'
+    
+    when /^the profile page for John$/
+        student_path(Student.find_by_firstName("John")[:id])
+
+        
     else
       begin
         page_name =~ /^the (.*) page$/

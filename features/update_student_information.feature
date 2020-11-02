@@ -18,3 +18,5 @@ Scenario: update graduation year
   When I follow "Edit"
   And I fill in "student_graduationYear" with "2022"
   And I press "Update"
+  Then I am on the profile page for John
+  And I should see "2022"

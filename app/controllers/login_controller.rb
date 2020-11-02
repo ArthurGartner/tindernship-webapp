@@ -14,19 +14,19 @@ class LoginController < ApplicationController
     def admin
     end
 
-    def poststudent
+    def post_student
         render json: {msg: "Invalid username or password"}
     end
 
-    def postregister
+    def post_register
         render json: {msg: "Username is already taken"}
     end
 
-    def postemployer
+    def post_employer
         render json: {msg: "Invalid password"}
     end
 
-    def postadmin
+    def post_admin
         render json: {msg: "Invalid password"}
     end
 end

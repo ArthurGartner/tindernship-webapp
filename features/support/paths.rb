@@ -15,12 +15,23 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+
+    when /^the splash screen$/
+      '/'
+    when /^the student login page$/
+      '/login/student'
+    when /^the student register page$/
+      '/register'
+    when /^the employer login page$/
+      '/login/employer'
+    when /^the admin login page$/
+      '/admin'
+
         
     # I go to the student dashboad page
     when /^the student dashboard page$/ then '/dashboard'

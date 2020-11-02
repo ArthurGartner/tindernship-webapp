@@ -1,0 +1,67 @@
+@import "bulma";
+@import "./bulmaswatch.min.scss";
+
+html, body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    background-color: #C0E4F1;
+}
+
+#welcome-hero, #student-login, #admin-login, #employer-login {
+    top: 15%;
+    min-height: 500px;
+    >.box {
+        width: 50%;
+        background-color: #f1edee;
+        left: 25%;
+        height: 100%;
+        position: relative;
+        >h1 {
+            text-align: center;
+        }
+    }
+    .notification {
+        display: none;
+        p {
+            text-align: center;
+        }
+    }
+}
+
+#student-login, #employer-login {
+    #two-buttons {
+        width: 100%;
+        button {
+            width: 45%;
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+    #register {
+        width: 45%;
+        left: 27.5%;
+        position: relative;
+    }
+}
+
+#csrf {
+    display: none;
+}
+
+#admin-login {
+    #login {
+        width: 100%;
+    }
+}
+
+.button {
+    a {
+        color: inherit;
+        text-decoration: none;
+
+    }
+}

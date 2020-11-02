@@ -1,0 +1,25 @@
+<div class="section" id="admin-login">
+    <div class="box">
+        <h1 class="title">Admin Login</h1>
+        <hr/>
+        <div class="form">
+            <div class="notification is-primary" id="error">
+                <button id="errorclose" class="delete"></button>
+                <p id="errormsg"></p>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" id="password" type="password" required>
+                </div>
+            </div>
+            <div class="field">
+                <button class="button is-success" id="login">Login</button>
+            </div>
+            <br>
+            <div id="csrf"><%= form_authenticity_token %></div>
+        </div>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'adminlogin' %>

@@ -3,6 +3,9 @@ Feature: Login to student account
     I want to login into my account
     So I can edit my information
 
+    Background: Student Test Account Exists
+        Given the student test account is created
+
     Scenario: Navigate to the login page
         Given I am on the splash screen
         When I follow "Student Login"

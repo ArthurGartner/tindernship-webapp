@@ -3,6 +3,9 @@ Feature: Login to employer account
     I want to login into my account
     So I can view student information
 
+    Background: Employer Account Exists
+        Given the employer account is created
+
     Scenario: Navigate to the login page
         Given I am on the splash screen
         When I follow "Employer Login"

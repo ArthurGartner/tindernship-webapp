@@ -12,10 +12,10 @@ Feature: Login to student account
     @javascript
     Scenario: Submit the login form (valid username/password)
         Given I am on the student login page
-        When I fill in "username" with "test"
-        And I fill in "password" with "test"
+        When I fill in "username" with "testaccount"
+        And I fill in "password" with "testaccount"
         And I press "Login"
-        Then I should see "Student Dashboard"
+        Then I should see "Profile for"
 
     @javascript
     Scenario: Submit the login form (invalid username/password)

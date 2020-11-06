@@ -5,8 +5,7 @@ $("#login").on("click", function() {
 
     $.ajax({
         type: "POST",
-        url: "/login/student?&authenticity_token=" + encodeURIComponent(token),
-        data: {username: username, password: password},
+        url: `/login/student?&authenticity_token=${encodeURIComponent(token)}&username=${username}&password=${password}`,
         success: function(data) {
             if (!!data.msg) {
                 console.log(data.msg);

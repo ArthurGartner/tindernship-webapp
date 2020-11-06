@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_141310) do
+ActiveRecord::Schema.define(version: 2020_11_06_001252) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "username"
+    t.text "password"
+    t.integer "accountType"
+    t.integer "accountId"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.text "sessionhash"
+    t.integer "accountid"
+    t.time "logintime"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "profilePhotoLink"

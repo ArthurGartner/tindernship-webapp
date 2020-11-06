@@ -12,9 +12,9 @@ Feature: Login to employer account
     @javascript
     Scenario: Submit the login form (valid password)
         Given I am on the employer login page
-        When I fill in "password" with "test"
+        When I fill in "password" with "employer"
         And I press "Login"
-        Then I should see "Employer Dashboard"
+        Then I should see "Welcome to Tindership Dashboard"
 
     @javascript
     Scenario: Submit the login form (invalid password)

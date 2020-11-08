@@ -7,6 +7,15 @@ class StudentsController < ApplicationController
 
   def edit
     @student = Student.find params[:id]
+    @date = Date.today
+    @months = []
+    (1..12).each do |m|
+      @months << [Date::MONTHNAMES[m]]
+    end
+    @years = []
+    (0..9).each do |y|
+      @years << [@date.next_year(y).strftime("%Y")]
+    end
   end
 
   def update

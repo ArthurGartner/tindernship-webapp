@@ -2,12 +2,12 @@
 <%= form_tag(student_path(@student), method: "put") do %>
   <ul style="list-style-type:none;">
     <li>
-      <%= label :student, :graduationMonth, 'Graduation Month' %>
-      <%= text_field :student, :graduationMonth %>
+      <%= label :student, :graduationMonth, 'Graduation Month:' %>
+      <%= select :student, :graduationMonth, @months %>
     </li>
     <li>
-      <%= label :student, :graduationYear, 'Graduation Year' %>
-      <%= text_field :student, :graduationYear %>
+      <%= label :student, :graduationYear, 'Graduation Year:' %>
+      <%= select :student, :graduationYear, @years %>
     </li>
     <li>
       <%= label :student, :bioText, 'Additional information' %>

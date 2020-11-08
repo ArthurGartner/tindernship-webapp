@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
 
   def student_params
     params.require(:student).permit(:firstName, :lastName, :graduationMonth, :graduationYear, :bioText, :locationPreference1,
-    :locationPreference2, :locationPreference3, :fullTime, :partTime)
+    :locationPreference2, :locationPreference3, :availability)
   end
 
   def edit

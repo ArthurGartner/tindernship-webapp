@@ -40,15 +40,15 @@ Editing <%= @student.firstName %> <%= @student.lastName %>'s profile
       <%= text_field :student, :locationPreference3 %>
     </li>
     <li>
-      <%= label :student, :fullTime, 'Full & Part time' %>
+      <%= label :student, :availability, 'Full & Part time' %>
       <%= radio_button :student, :availability, 'Full & Part time' %>
     </li>
     <li>
-      <%= label :student, :fullTime, 'Full time' %>
+      <%= label :student, :availability, 'Full time' %>
       <%= radio_button :student, :availability, 'Full time' %>
     </li>
     <li>
-      <%= label :student, :partTime, 'Part time' %>
+      <%= label :student, :availability, 'Part time' %>
       <%= radio_button :student, :availability, 'Part time'%>
     </li>
   <%= submit_tag("Update") %>

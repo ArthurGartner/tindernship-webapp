@@ -3,6 +3,9 @@ Feature: Login to student account
     I want to login into my account
     So I can edit my information
 
+    Background: Student Test Account Exists
+        Given the student test account is created
+
     Scenario: Navigate to the login page
         Given I am on the splash screen
         When I follow "Student Login"
@@ -12,10 +15,10 @@ Feature: Login to student account
     @javascript
     Scenario: Submit the login form (valid username/password)
         Given I am on the student login page
-        When I fill in "username" with "test"
-        And I fill in "password" with "test"
+        When I fill in "username" with "testaccount"
+        And I fill in "password" with "testaccount"
         And I press "Login"
-        Then I should see "Student Dashboard"
+        Then I should see "Profile for"
 
     @javascript
     Scenario: Submit the login form (invalid username/password)

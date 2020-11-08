@@ -1,3 +1,5 @@
+require 'digest'
+
 class LoginController < ApplicationController
     def index
     end
@@ -14,19 +16,69 @@ class LoginController < ApplicationController
     def admin
     end
 
+    def createSession accountid
+        hash = Digest::MD5.hexdigest(SecureRandom.uuid)
+        Session.create(sessionhash: hash, accountid: accountid, logintime: Time.now.getutc)
+        hash
+    end
+
     def post_student
-        render json: {msg: "Invalid username or password"}
+        username = params[:username] || ""
+        password = params[:password] || ""
+        account = Account.find_by(username: username, password: password)
+        if account == nil
+            render json: {msg: "Invalid username or password"}
+        else
+            hash = createSession(account.id)
+            session[:hash] = hash
+            student = Student.find_by(id: account.accountId)
+            if student == nil
+                render json: {msg: "this should literally never happen"}
+            else
+                redirect_to student_path(student.id)
+            end
+        end
     end
 
     def post_register
-        render json: {msg: "Username is already taken"}
+        username = params[:username] || ""
+        password = params[:password] || ""
+        if username.length < 3
+            render json: {msg:"Username too short"}
+            return
+        end
+        if password.length < 8
+            render json: {msg:"Password too short"}
+            return
+        end
+        student = Student.create
+        account = Account.create(username: username, password: password, accountType: 0, accountId: student.id)
+        hash = createSession account.id
+        session[:hash] = hash
+        redirect_to edit_student_path(student.id)
     end
 
     def post_employer
-        render json: {msg: "Invalid password"}
+        password = params[:password] || ""
+        account = Account.find_by(password: password, accountType: 1)
+        if account == nil
+            render json: {msg: "Invalid password"}
+        else
+            hash = createSession(account.id)
+            session[:hash] = hash
+            redirect_to dashboard_path
+        end
     end
 
     def post_admin
-        render json: {msg: "Invalid password"}
+        password = params[:password] || ""
+        account = Account.find_by(password: password, accountType: 2)
+        if account == nil
+            render json: {msg: "Invalid password"}
+        else
+            hash = createSession(account.id)
+            session[:hash] = hash
+            redirect_to dashboard_path
+        end
     end
 end

@@ -16,5 +16,5 @@ end
 
 Account.create!(username: "", password: "employer", accountType: 1)
 Account.create!(username: "", password: "admin", accountType: 2)
-newstudent = Student.create!
+newstudent = Student.create!(availability: 'Part time')
 Account.create!(username: "testaccount", password: "testaccount", accountType: 0, accountId: newstudent.id)

@@ -51,7 +51,7 @@ class LoginController < ApplicationController
             render json: {msg:"Password too short"}
             return
         end
-        student = Student.create
+        student = Student.create(availability: 'Part Time')
         account = Account.create(username: username, password: password, accountType: 0, accountId: student.id)
         hash = createSession account.id
         session[:hash] = hash

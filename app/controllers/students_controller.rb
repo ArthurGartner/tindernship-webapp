@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 
   def student_params
-    params.require(:student).permit(:graduationMonth, :graduationYear, :bioText, :locationPreference1,
+    params.require(:student).permit(:firstName, :lastName, :graduationMonth, :graduationYear, :bioText, :locationPreference1,
     :locationPreference2, :locationPreference3, :fullTime, :partTime)
   end
 

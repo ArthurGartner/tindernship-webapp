@@ -1,7 +1,6 @@
 class CreateStudents < ActiveRecord::Migration[6.0]
   def change
     create_table :students do |t|
-      t.string :profilePhotoLink
       t.string :firstName
       t.string :lastName
       t.string :graduationMonth
@@ -10,8 +9,7 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.string :locationPreference1
       t.string :locationPreference2
       t.string :locationPreference3
-      t.boolean :fullTime
-      t.boolean :partTime
+      t.string :availability
       t.string :resumeLink
 
       t.timestamps

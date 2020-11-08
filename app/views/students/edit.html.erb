@@ -1,7 +1,21 @@
-<h4> Editing <%= @student.firstName %> <%= @student.lastName %>'s profile</h4>
+<h4>
+<% if @student.firstName.nil? || @student.firstName.empty? %>
+New profile creation
+<% else %>
+Editing <%= @student.firstName %> <%= @student.lastName %>'s profile
+<% end %>
+</h4>
+
 <%= form_tag(student_path(@student), method: "put") do %>
   <ul style="list-style-type:none;">
     <li>
+      <%= label :student, :firstName, 'First name:' %>
+      <%= text_field :student, :firstName %>
+    <li>
+      <li>
+        <%= label :student, :lastName, 'Last name:' %>
+        <%= text_field :student, :lastName %>
+      <li>
       <%= label :student, :graduationMonth, 'Graduation Month:' %>
       <%= select :student, :graduationMonth, @months %>
     </li>
@@ -26,12 +40,16 @@
       <%= text_field :student, :locationPreference3 %>
     </li>
     <li>
-      <%= label :student, :fullTime, 'Full time:' %>
-      <%= check_box :student, :fullTime %>
+      <%= label :student, :fullTime, 'Full & Part time' %>
+      <%= radio_button :student, :availability, 'Full & Part time' %>
     </li>
     <li>
-      <%= label :student, :partTime, 'Part time:' %>
-      <%= check_box :student, :partTime %>
+      <%= label :student, :fullTime, 'Full time' %>
+      <%= radio_button :student, :availability, 'Full time' %>
+    </li>
+    <li>
+      <%= label :student, :partTime, 'Part time' %>
+      <%= radio_button :student, :availability, 'Part time' %>
     </li>
   <%= submit_tag("Update") %>
   </ul>

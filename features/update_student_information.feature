@@ -1,3 +1,4 @@
+@javascript
 Feature: update student information from student form
 
   As a student
@@ -5,18 +6,20 @@ Feature: update student information from student form
   I want to be able to update my profile
 
 Background: student is logged into their account
-  Given the following student account is created:
+  Given the following student account is registered:
 
-  | firstName |graduationYear|bioText|
-  | John      |2021          |test   |
+  | firstName |graduationYear|bioText|availability|
+  | John      |2021          |test   |Part time   |
 
-  When I am on the profile page for John
-  Then I should see "John"
-  And I should see "2021"
+  Given I am on the student login page
+  When I fill in "username" with "teststudentaccount"
+  And I fill in "password" with "teststudentaccount"
+  And I press "Login"
+  Then I should see "Profile for"
 
 Scenario: update graduation year
   When I follow "Edit"
-  And I fill in "student_graduationYear" with "2022"
+  And I select "2022" from "student_graduationYear"
   And I press "Update"
   Then I am on the profile page for John
   And I should see "2022"

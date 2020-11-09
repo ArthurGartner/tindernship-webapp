@@ -1,5 +1,6 @@
-Given /the following student account is created/ do |students_table|
+Given /the following student account is registered/ do |students_table|
   students_table.hashes.each do |student|
-    Student.create student
+    newStudent = Student.create student
+    account = Account.create(username: "teststudentaccount", password: "teststudentaccount", accountType: 0, accountId: newStudent.id)
   end
 end

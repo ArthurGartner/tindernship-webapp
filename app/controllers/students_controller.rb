@@ -37,9 +37,6 @@ class StudentsController < ApplicationController
     if student_account.id != user_account.accountId
         puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
         redirect_to '/'
-    end
-
-      
-      
+    end        
   end
 end

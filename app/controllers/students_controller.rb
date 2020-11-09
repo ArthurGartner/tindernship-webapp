@@ -26,5 +26,20 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find params[:id]
+      
+    user_session = Session.find_by(sessionhash: session[:hash])
+    user_account_id = user_session.accountid
+    user_account = Account.find(user_account_id)  
+    
+    student_account = Student.find(params[:id])
+    puts "Student ID: #{student_account.id}"  
+      
+    if student_account.id != user_account.accountId
+        puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
+        redirect_to '/'
+    end
+
+      
+      
   end
 end

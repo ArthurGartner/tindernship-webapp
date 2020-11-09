@@ -11,10 +11,12 @@ more_students = [
   :graduationYear => 2021, :bioText => 'Sample Text', :locationPreference1 => 'Charleston, SC'}]
 
 more_students.each do |student|
-  Student.create!(student)
+  newStudent = Student.create!(student)
+  Account.create!(username: newStudent.firstName + newStudent.lastName, password: "password", accountType: 0, accountId: newStudent.id)
 end
 
 Account.create!(username: "", password: "employer", accountType: 1)
 Account.create!(username: "", password: "admin", accountType: 2)
+
 newstudent = Student.create!(availability: 'Part time', firstName: "Homer", lastName: "Simpson", locationPreference1: "Springfield")
 Account.create!(username: "testaccount", password: "testaccount", accountType: 0, accountId: newstudent.id)

@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2020_11_06_001252) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "profilePhotoLink"
     t.string "firstName"
     t.string "lastName"
     t.string "graduationMonth"
@@ -35,8 +34,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_001252) do
     t.string "locationPreference1"
     t.string "locationPreference2"
     t.string "locationPreference3"
-    t.boolean "fullTime"
-    t.boolean "partTime"
+    t.string "availability"
     t.string "resumeLink"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

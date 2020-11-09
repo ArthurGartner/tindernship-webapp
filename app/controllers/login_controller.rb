@@ -26,9 +26,14 @@ class LoginController < ApplicationController
         username = params[:username] || ""
         password = params[:password] || ""
         account = Account.find_by(username: username, password: password)
+        
+        
+        
         if account == nil
             render json: {msg: "Invalid username or password"}
         else
+            puts "Account accountId at POST: #{account.accountId}"
+            puts "Account account.id at POST: #{account.id}"
             hash = createSession(account.id)
             session[:hash] = hash
             student = Student.find_by(id: account.accountId)
@@ -51,7 +56,7 @@ class LoginController < ApplicationController
             render json: {msg:"Password too short"}
             return
         end
-        student = Student.create
+        student = Student.create(availability: 'Part time')
         account = Account.create(username: username, password: password, accountType: 0, accountId: student.id)
         hash = createSession account.id
         session[:hash] = hash

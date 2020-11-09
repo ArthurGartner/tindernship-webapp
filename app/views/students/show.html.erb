@@ -20,22 +20,7 @@
   </li>
   <li>
     <div>
-      Available full-time:
-      <% if @student.fullTime %>
-      Yes
-      <% else %>
-      No
-      <% end %>
-    </div>
-  </li>
-  <li>
-    <div>
-    Available part-time:
-    <% if @student.partTime %>
-    Yes
-    <% else %>
-    No
-    <% end %>
+      Availability: <%= @student.availability %>
     </div>
   </li>
   <li>

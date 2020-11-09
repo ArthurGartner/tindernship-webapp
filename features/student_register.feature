@@ -15,7 +15,7 @@ Feature: Register a student account
         When I fill in "username" with "testregister"
         And I fill in "password" with "testregister"
         And I press "Register"
-        Then I should see "Editing"
+        Then I should see "New profile creation"
 
     @javascript
     Scenario: Submit the register form (username too short)

@@ -35,4 +35,5 @@ Things you may want to cover:
 * ...
 # Tindernship
 [Heroku Link](https://tindernship-csci-fall-2020.herokuapp.com/)
+
 [Pivotal Tracker Link](https://www.pivotaltracker.com/n/projects/2472320)

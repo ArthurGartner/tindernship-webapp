@@ -13,6 +13,11 @@ You will need to run the install_chrome.sh script to install Chrome binary befor
 4. Run command: bundle exec rake db:migrate db:test:prepare db:seed
 5. Run command: bundle exec cucumber
 
+# To test Tindernship login and features
+
+1. To test student accounts - click student login & then register a new account. You should only be able to view a profile for the user logged in.
+2. To test employer account - click Employer Login and user the password 'employer'
+3. To test admin account - go to route /admin and use the password 'admin'
 
 Things you may want to cover:
 

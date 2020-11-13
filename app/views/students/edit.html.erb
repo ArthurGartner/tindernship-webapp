@@ -51,6 +51,10 @@ Editing <%= @student.firstName %> <%= @student.lastName %>'s profile
       <%= label :student, :availability, 'Part time' %>
       <%= radio_button :student, :availability, 'Part time'%>
     </li>
+    <li>
+      <%= label :student, :resumeLink, 'Resume link:' %>
+      <%= text_field :student, :resumeLink %>
+    </li>
   <%= submit_tag("Update") %>
   </ul>
 <% end %>

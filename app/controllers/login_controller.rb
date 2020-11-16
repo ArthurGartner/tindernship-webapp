@@ -60,7 +60,7 @@ class LoginController < ApplicationController
     def post_register
         username = params[:username] || ""
         password = params[:password] || ""
-        if username.length < 3
+        if username.length < 16
             render json: {msg:"Username too short"}
             return
         end

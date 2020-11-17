@@ -68,6 +68,14 @@ class LoginController < ApplicationController
           render json: {msg:"A valid Citadel email must be used for the username"}
           return
         end
+        
+        user = Account.where("lower(username) = ?", username.downcase)
+        
+        if user.present? 
+            render json: {msg: "An account with username \"#{username}\" has already been created."}
+            return
+        end
+        
         if password.length < 8
             render json: {msg:"Password too short"}
             return

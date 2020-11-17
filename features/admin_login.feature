@@ -11,7 +11,7 @@ Feature: Login to admin account
         Given I am on the admin login page
         When I fill in "password" with "admin"
         And I press "Login"
-        Then I should see "Dashboard"
+        Then I should see "Full and Part Time"
 
     @javascript
     Scenario: Submit the login form (invalid password)

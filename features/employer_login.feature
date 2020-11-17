@@ -17,7 +17,7 @@ Feature: Login to employer account
         Given I am on the employer login page
         When I fill in "password" with "employer"
         And I press "Login"
-        Then I should see "Welcome to Tindership Dashboard"
+        Then I should see "Full and Part Time"
 
     @javascript
     Scenario: Submit the login form (invalid password)

@@ -6,4 +6,4 @@ Feature: View Student Profile Dashboard
 
 Scenario: View Student Dashboard
   Given I am on the student dashboard page
-  Then I should see "Tindership Dashboard" 
+  Then I should see "Full and Part Time" 

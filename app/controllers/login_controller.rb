@@ -83,7 +83,7 @@ class LoginController < ApplicationController
         else
             hash = createSession(account.id)
             session[:hash] = hash
-            redirect_to dashboard_path
+            redirect_to admin_index_path
         end
     end
 end

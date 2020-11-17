@@ -1,0 +1,17 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#tabs-with-content {
+	.tabs {
+		&:not(:last-child) {
+			margin-bottom: 0;
+		}
+	}
+	.tab-content {
+		padding: 1rem;
+		display: none;
+	}
+	.tab-content.is-active {
+		display: block;
+	}
+}

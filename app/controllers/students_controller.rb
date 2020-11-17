@@ -2,24 +2,24 @@ class StudentsController < ApplicationController
 
   def student_params
     params.require(:student).permit(:firstName, :lastName, :graduationMonth, :graduationYear, :bioText, :locationPreference1,
-    :locationPreference2, :locationPreference3, :availability)
+    :locationPreference2, :locationPreference3, :availability, :resumeLink)
   end
 
   def edit
     @student = Student.find params[:id]
-      
+
     user_session = Session.find_by(sessionhash: session[:hash])
     user_account_id = user_session.accountid
-    user_account = Account.find(user_account_id)  
-    
+    user_account = Account.find(user_account_id)
+
     student_account = Student.find(params[:id])
-    puts "Student ID: #{student_account.id}"  
-      
+    #puts "Student ID: #{student_account.id}"
+
     if student_account.id != user_account.accountId
-        puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
+        #puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
         redirect_to '/'
-    end  
-      
+    end
+
     @date = Date.today
     @months = []
     (1..12).each do |m|
@@ -39,17 +39,25 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find params[:id]
-      
+
     user_session = Session.find_by(sessionhash: session[:hash])
     user_account_id = user_session.accountid
-    user_account = Account.find(user_account_id)  
+    user_account = Account.find(user_account_id)
     
-    student_account = Student.find(params[:id])
-    puts "Student ID: #{student_account.id}"  
-      
-    if student_account.id != user_account.accountId
+    if user_account.accountType == 0
+      student_account = Student.find(params[:id])
+      puts "Student ID: #{student_account.id}"
+
+      if student_account.id != user_account.accountId
         puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
-        redirect_to '/'
-    end        
+        redirect_to '/' and return
+      end
+    end
+      
+    if user_account.accountType == 1 || 2
+       student_account = Student.find(params[:id]) 
+    end
+      
+    flash[:onstudent] = true;
   end
 end

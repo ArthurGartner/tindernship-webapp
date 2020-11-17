@@ -2,6 +2,21 @@ require 'digest'
 
 class LoginController < ApplicationController
     def index
+      if session[:hash]
+        user_session = Session.find_by(sessionhash: session[:hash])
+        user_account_id = user_session.accountid
+        user_account = Account.find(user_account_id)
+
+        if user_account.accountType == 0
+          student_account = Student.find(user_account.accountId)
+          redirect_to student_path(student_account) and return  
+        end
+          
+        if user_account.accountType == 1
+          redirect_to dashboard_path and return  
+        end
+          
+      end
     end
 
     def student
@@ -16,6 +31,11 @@ class LoginController < ApplicationController
     def admin
     end
 
+    def logout
+      session.delete(:hash)
+      redirect_to homepage_path and return
+    end
+
     def createSession accountid
         hash = Digest::MD5.hexdigest(SecureRandom.uuid)
         Session.create(sessionhash: hash, accountid: accountid, logintime: Time.now.getutc)
@@ -26,9 +46,9 @@ class LoginController < ApplicationController
         username = params[:username] || ""
         password = params[:password] || ""
         account = Account.find_by(username: username, password: password)
-        
-        
-        
+
+
+
         if account == nil
             render json: {msg: "Invalid username or password"}
         else
@@ -48,10 +68,22 @@ class LoginController < ApplicationController
     def post_register
         username = params[:username] || ""
         password = params[:password] || ""
-        if username.length < 3
+        if username.length < 16
             render json: {msg:"Username too short"}
             return
         end
+        if username !~ /@citadel.edu$/i
+          render json: {msg:"A valid Citadel email must be used for the username"}
+          return
+        end
+        
+        user = Account.where("lower(username) = ?", username.downcase)
+        
+        if user.present? 
+            render json: {msg: "An account with username \"#{username}\" has already been created."}
+            return
+        end
+        
         if password.length < 8
             render json: {msg:"Password too short"}
             return

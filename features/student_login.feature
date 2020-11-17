@@ -15,7 +15,7 @@ Feature: Login to student account
     @javascript
     Scenario: Submit the login form (valid username/password)
         Given I am on the student login page
-        When I fill in "username" with "testaccount"
+        When I fill in "username" with "testaccount@citadel.edu"
         And I fill in "password" with "testaccount"
         And I press "Login"
         Then I should see "Profile for"
@@ -23,7 +23,9 @@ Feature: Login to student account
     @javascript
     Scenario: Submit the login form (invalid username/password)
         Given I am on the student login page
-        When I fill in "username" with "abc"
+        When I fill in "username" with "abc@citadel.edu"
         And I fill in "password" with "abc"
         And I press "Login"
         Then I should see "Invalid username or password"
+    
+    

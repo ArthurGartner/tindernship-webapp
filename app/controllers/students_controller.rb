@@ -45,10 +45,10 @@ class StudentsController < ApplicationController
     user_account = Account.find(user_account_id)
 
     student_account = Student.find(params[:id])
-    #puts "Student ID: #{student_account.id}"
-
-    if student_account.id != user_account.accountId
-        #puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
+    puts "Student ID: #{student_account.id}"  
+      
+    if student_account.id != user_account.accountId && user_account.accountType == 0
+        puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
         redirect_to '/'
     end
 

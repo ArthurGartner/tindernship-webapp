@@ -39,7 +39,9 @@ module NavigationHelpers
     when /^the profile page for John$/
         student_path(Student.find_by_firstName("John")[:id])
 
-        
+    when /^the profile page for testaccount$/
+        student_path({id: 1})
+              
     else
       begin
         page_name =~ /^the (.*) page$/

@@ -10,3 +10,4 @@ Feature: Login to student account
         When I follow "Student Login"
         Then I should see "Student Login"
         And I should see "Username"
+  

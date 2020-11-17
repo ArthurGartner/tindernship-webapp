@@ -23,3 +23,11 @@ Scenario: update graduation year
   And I press "Update"
   Then I am on the profile page for John
   And I should see "2022"
+  
+Scenario: update resume link
+  When I follow "Edit"
+  And I fill in "student_resumeLink" with "https://go.citadel.edu/"
+  And I press "Update"
+  Then I am on the profile page for John
+  And I follow "Resume Link"
+  Then I should see "The Citadel"

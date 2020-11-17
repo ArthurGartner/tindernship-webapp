@@ -24,8 +24,13 @@
     </div>
   </li>
   <li>
-    <%= @student.resumeLink %>
+    <% unless @student.resumeLink.nil? || @student.resumeLink.empty? %>
+    <div>
+      <%= link_to 'Resume Link', @student.resumeLink, :class => 'btn btn-primary col-2'%>
+    </div>
+    <%end%>
   </li>
 
 </ul>
 <%= link_to 'Edit', edit_student_path(@student), :class => 'btn btn-primary col-2'%>
+<%= link_to 'Log Out', logoutredirect_path, :class => 'btn btn-primary col-2'%>

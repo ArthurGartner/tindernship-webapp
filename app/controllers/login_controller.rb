@@ -6,8 +6,16 @@ class LoginController < ApplicationController
         user_session = Session.find_by(sessionhash: session[:hash])
         user_account_id = user_session.accountid
         user_account = Account.find(user_account_id)
-        student_account = Student.find(user_account.accountId)
-        redirect_to student_path(student_account) and return
+
+        if user_account.accountType == 0
+          student_account = Student.find(user_account.accountId)
+          redirect_to student_path(student_account) and return  
+        end
+          
+        if user_account.accountType == 1
+          redirect_to dashboard_path and return  
+        end
+          
       end
     end
 

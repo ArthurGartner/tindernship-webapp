@@ -43,15 +43,21 @@ class StudentsController < ApplicationController
     user_session = Session.find_by(sessionhash: session[:hash])
     user_account_id = user_session.accountid
     user_account = Account.find(user_account_id)
+    
+    if user_account.accountType == 0
+      student_account = Student.find(params[:id])
+      puts "Student ID: #{student_account.id}"
 
-    student_account = Student.find(params[:id])
-    puts "Student ID: #{student_account.id}"  
-      
-    if student_account.id != user_account.accountId && user_account.accountType == 0
+      if student_account.id != user_account.accountId
         puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
-        redirect_to '/'
+        redirect_to '/' and return
+      end
     end
-
-    #flash[:onstudent] = true;
+      
+    if user_account.accountType == 1 || 2
+       student_account = Student.find(params[:id]) 
+    end
+      
+    flash[:onstudent] = true;
   end
 end

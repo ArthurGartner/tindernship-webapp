@@ -17,6 +17,4 @@ Rails.application.routes.draw do
   get "/admin", to: "login#admin"
   post "/admin", to: "login#post_admin"
   get "/logoutredirect", to: "login#logout"
-
-
 end

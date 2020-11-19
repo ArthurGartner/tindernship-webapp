@@ -41,9 +41,15 @@ class StudentsController < ApplicationController
     @student = Student.find params[:id]
 
     user_session = Session.find_by(sessionhash: session[:hash])
+    if user_session == nil then
+      redirect_to '/' and return
+    end
     user_account_id = user_session.accountid
     user_account = Account.find(user_account_id)
-    
+    if user_account == nil then
+      redirect_to '/logoutredirect'
+    end
+
     if user_account.accountType == 0
       student_account = Student.find(params[:id])
       puts "Student ID: #{student_account.id}"
@@ -54,9 +60,7 @@ class StudentsController < ApplicationController
       end
     end
       
-    if user_account.accountType == 1 || 2
-       student_account = Student.find(params[:id]) 
-    end
+    @atype = user_account.accountType
       
     flash[:onstudent] = true;
   end

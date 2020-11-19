@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_001252) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "username"
-    t.text "password"
+    t.text "password_digest"
     t.integer "accountType"
     t.integer "accountId"
   end

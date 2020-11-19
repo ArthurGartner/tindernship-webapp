@@ -1,60 +1,81 @@
-<h4>
-<% if @student.firstName.nil? || @student.firstName.empty? %>
-New profile creation
-<% else %>
-Editing <%= @student.firstName %> <%= @student.lastName %>'s profile
-<% end %>
-</h4>
-
-<%= form_tag(student_path(@student), method: "put") do %>
-  <ul style="list-style-type:none;">
-    <li>
-      <%= label :student, :firstName, 'First name:' %>
-      <%= text_field :student, :firstName %>
-    <li>
-      <li>
-        <%= label :student, :lastName, 'Last name:' %>
-        <%= text_field :student, :lastName %>
-      <li>
-      <%= label :student, :graduationMonth, 'Graduation Month:' %>
-      <%= select :student, :graduationMonth, @months %>
-    </li>
-    <li>
-      <%= label :student, :graduationYear, 'Graduation Year:' %>
-      <%= select :student, :graduationYear, @years %>
-    </li>
-    <li>
-      <%= label :student, :bioText, 'Additional information' %>
-      <%= text_area :student, :bioText %>
-    </li>
-    <li>
-      <%= label :student, :locationPreference1, 'Location preference 1:' %>
-      <%= text_field :student, :locationPreference1 %>
-    </li>
-    <li>
-      <%= label :student, :locationPreference2, 'Location preference 2:' %>
-      <%= text_field :student, :locationPreference2 %>
-    </li>
-    <li>
-      <%= label :student, :locationPreference3, 'Location preference 3:' %>
-      <%= text_field :student, :locationPreference3 %>
-    </li>
-    <li>
-      <%= label :student, :availability, 'Full & Part time' %>
-      <%= radio_button :student, :availability, 'Full & Part time' %>
-    </li>
-    <li>
-      <%= label :student, :availability, 'Full time' %>
-      <%= radio_button :student, :availability, 'Full time' %>
-    </li>
-    <li>
-      <%= label :student, :availability, 'Part time' %>
-      <%= radio_button :student, :availability, 'Part time'%>
-    </li>
-    <li>
-      <%= label :student, :resumeLink, 'Resume link:' %>
-      <%= text_field :student, :resumeLink %>
-    </li>
-  <%= submit_tag("Update") %>
-  </ul>
-<% end %>
+<div class="section" id="welcome-hero">
+    <div class="box" id="student-profile">
+      <h1 class="title">
+        <% if @student.firstName.nil? || @student.firstName.empty? %>
+          New profile creation
+        <% else %>
+          Editing <%= @student.firstName %> <%= @student.lastName %>'s profile
+        <% end %>
+      </h1>
+      <hr/>
+      <%= form_tag(student_path(@student), method: "put") do %>
+        <div class="field">
+          <label class="label">First Name</label>
+          <div class="control">
+            <%= text_field :student, :firstName, :class => "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Last Name</label>
+          <div class="control">
+            <%= text_field :student, :lastName, :class => "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Graduation Month</label>
+          <div class="control">
+            <div class="select">
+              <%= select :student, :graduationMonth, @months%>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Graduation Year</label>
+          <div class="control">
+            <div class="select">
+              <%= select :student, :graduationYear, @years%>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">About Me</label>
+          <div class="control">
+            <%= text_area :student, :bioText, :class => "textarea" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Location Preference 1</label>
+          <div class="control">
+            <%= text_field :student, :locationPreference1, :class => "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Location Preference 2</label>
+          <div class="control">
+            <%= text_field :student, :locationPreference2, :class => "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Location Preference 3</label>
+          <div class="control">
+            <%= text_field :student, :locationPreference3, :class => "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Availability</label>
+          <div class="control">
+            <div class="select">
+              <%= select :student, :availability, ['Full & Part time', 'Full time', 'Part time'] %>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Resume Link</label>
+          <div class="control">
+            <%= text_field :student, :resumeLink, :class => "input" %>
+          </div>
+        </div>
+        <%= submit_tag "Update", class: "button is-success" %>
+      <% end %>
+    </div>
+</div>

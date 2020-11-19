@@ -1,5 +1,18 @@
 var global_students = null;
 
+$("#logout").on("click", function() {
+    $.ajax({
+        type: "GET",
+        url: "/logoutredirect",
+        success: function() {
+            document.location = "/";
+        },
+        error: function() {
+            document.location = "/";
+        }
+    })
+})
+
 $("#search").on("click", function() {
     let times = $("#time").val();
     let location = $("#location").val().trim().toLowerCase();
@@ -71,7 +84,7 @@ function buildCard(student) {
                 </div>
             </div>
             <footer class="card-footer">
-                <button class="button is-white"><a href="/students/${student.id}">More Details</a></button>
+                <a href="/students/${student.id}" class="button is-white">More Details</a>
             </footer>
         </div>
     </div>

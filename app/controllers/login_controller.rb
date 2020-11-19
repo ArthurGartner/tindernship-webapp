@@ -4,18 +4,20 @@ class LoginController < ApplicationController
     def index
       if session[:hash]
         user_session = Session.find_by(sessionhash: session[:hash])
-        user_account_id = user_session.accountid
-        user_account = Account.find(user_account_id)
-
-        if user_account.accountType == 0
-          student_account = Student.find(user_account.accountId)
-          redirect_to student_path(student_account) and return  
+        if user_session != nil
+            user_account_id = user_session.accountid
+            user_account = Account.find(user_account_id)
+            if user_account != nil
+                if user_account.accountType == 0
+                    student_account = Student.find(user_account.accountId)
+                    redirect_to student_path(student_account) and return  
+                end
+                
+                if user_account.accountType == 1
+                    redirect_to dashboard_path and return  
+                end
+            end
         end
-          
-        if user_account.accountType == 1
-          redirect_to dashboard_path and return  
-        end
-          
       end
     end
 
@@ -33,7 +35,7 @@ class LoginController < ApplicationController
 
     def logout
       session.delete(:hash)
-      redirect_to homepage_path and return
+      redirect_to homepage_path
     end
 
     def createSession accountid
@@ -45,11 +47,9 @@ class LoginController < ApplicationController
     def post_student
         username = params[:username] || ""
         password = params[:password] || ""
-        account = Account.find_by(username: username, password: password)
+        account = Account.find_by(username: username)
 
-
-
-        if account == nil
+        if account == nil || !account.authenticate(password)
             render json: {msg: "Invalid username or password"}
         else
             puts "Account accountId at POST: #{account.accountId}"
@@ -97,8 +97,8 @@ class LoginController < ApplicationController
 
     def post_employer
         password = params[:password] || ""
-        account = Account.find_by(password: password, accountType: 1)
-        if account == nil
+        account = Account.find_by(accountType: 1)
+        if account == nil || !account.authenticate(password)
             render json: {msg: "Invalid password"}
         else
             hash = createSession(account.id)
@@ -109,8 +109,8 @@ class LoginController < ApplicationController
 
     def post_admin
         password = params[:password] || ""
-        account = Account.find_by(password: password, accountType: 2)
-        if account == nil
+        account = Account.find_by(accountType: 2)
+        if account == nil || !account.authenticate(password)
             render json: {msg: "Invalid password"}
         else
             hash = createSession(account.id)

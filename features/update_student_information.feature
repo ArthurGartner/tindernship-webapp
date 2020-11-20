@@ -8,8 +8,8 @@ Feature: update student information from student form
 Background: student is logged into their account
   Given the following student account is registered:
 
-  | firstName |graduationYear|bioText|availability|
-  | John      |2021          |test   |Part time   |
+  | firstName |lastName|graduationYear|bioText|availability|
+  | John      |Doe     |2021          |test   |Part time   |
 
   Given I am on the student login page
   When I fill in "username" with "teststudentaccount"
@@ -29,5 +29,12 @@ Scenario: update resume link
   And I fill in "student_resumeLink" with "https://go.citadel.edu/"
   And I press "Update"
   Then I am on the profile page for John
-  And I follow "Resume Link"
+  And I follow "resumelink"
   Then I should see "The Citadel"
+  
+Scenario: Form requires first name and last name fields be filled
+  When I follow "Edit"
+  And I fill in "student_firstName" with ""
+  And I press "Update"
+  Then I am on the profile page for John
+  And I should see "John"

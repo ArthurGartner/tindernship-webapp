@@ -16,4 +16,14 @@ Feature: Redirect to student page
         And I go to the splash screen
         Then I should see "Profile for"
         
+    @javascript
+    Scenario: Student is redirected to profile page after a record missing exception
+        Given I go to the student login page
+        When I fill in "username" with "testaccount@citadel.edu"
+        And I fill in "password" with "testaccount"
+        And I press "Login"
+        Then I should see "Profile for"
+        And I go to the student does not exist page
+        Then I should see "Profile for"
+        
         

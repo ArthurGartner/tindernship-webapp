@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_06_001252) do
+ActiveRecord::Schema.define(version: 2020_11_17_023800) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "username"
     t.text "password_digest"
     t.integer "accountType"
-    t.integer "accountId"
+    t.integer "account_id"
   end
 
   create_table "sessions", force: :cascade do |t|
     t.text "sessionhash"
-    t.integer "accountid"
+    t.integer "account_id"
     t.time "logintime"
   end
 
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_001252) do
     t.string "resumeLink"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "student_id"
   end
 
 end

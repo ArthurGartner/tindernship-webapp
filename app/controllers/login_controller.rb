@@ -18,7 +18,7 @@ class LoginController < ApplicationController
 
     def createSession accountid
         hash = Digest::MD5.hexdigest(SecureRandom.uuid)
-        Session.create(sessionhash: hash, accountid: accountid, logintime: Time.now.getutc)
+        Session.create(sessionhash: hash, account_id: accountid, logintime: Time.now.getutc)
         hash
     end
 
@@ -32,11 +32,11 @@ class LoginController < ApplicationController
         if account == nil
             render json: {msg: "Invalid username or password"}
         else
-            puts "Account accountId at POST: #{account.accountId}"
+            puts "Account accountId at POST: #{account.account_id}"
             puts "Account account.id at POST: #{account.id}"
             hash = createSession(account.id)
             session[:hash] = hash
-            student = Student.find_by(id: account.accountId)
+            student = Student.find_by(id: account.account_id)
             if student == nil
                 render json: {msg: "this should literally never happen"}
             else
@@ -57,7 +57,7 @@ class LoginController < ApplicationController
             return
         end
         student = Student.create(availability: 'Part time')
-        account = Account.create(username: username, password: password, accountType: 0, accountId: student.id)
+        account = Account.create(username: username, password: password, accountType: 0, account_id: student.id)
         hash = createSession account.id
         session[:hash] = hash
         redirect_to edit_student_path(student.id)

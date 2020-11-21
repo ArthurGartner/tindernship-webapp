@@ -2,7 +2,7 @@ class AdminController < ApplicationController
     
   def index
       @employers = Account.where(accountType: 1)
-      @students = Student.joins(:accounts).where("account.accountId = student.id")
+      @students = Student.joins("INNER JOIN accounts ON accounts.account_id = student.id")
       
   end
     

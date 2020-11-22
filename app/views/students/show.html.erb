@@ -1,31 +1,62 @@
-<h4> Profile for <%= @student.firstName %> <%= @student.lastName%> </h4>
-<ul style="list-style-type:none;">
-  <li>
-    <div>
-      Expected graduation date:
-      <%= @student.graduationMonth%> <%= @student.graduationYear%>
+<div class="section" id="welcome-hero">
+    <div class="box" id="student-profile">
+        <div>
+          <% unless @atype == 0 %>
+            <a href="/dashboard" class="button is-link" style="float:left;">Back</a>
+            <h1 class="title" style="float:right;">Profile for <%= @student.firstName %> <%= @student.lastName%></h1>
+          <% else %>
+            <h1 class="title">Profile for <%= @student.firstName %> <%= @student.lastName%></h1>
+          <% end %>
+        </div>
+        <hr style="clear:both"/>
+        <div class="level">
+            <h2>Expected graduation date:</h2>
+        </div>
+        <div class="level">
+            <%= @student.graduationMonth%> <%= @student.graduationYear%>
+        </div>
+        <div class="level">
+            <h2>Student biography:</h2>
+        </div>
+        <div class="level">
+            <%= @student.bioText %>
+        </div>
+        <div class="level">
+            <h2>Location preferences:</h2>
+        </div>
+        <div class="level">
+            <%= @student.locationPreference1 %>
+            <% unless @student.locationPreference2 == "" || @student.locationPreference2 == nil %>
+              <br><%= @student.locationPreference2 %>
+            <% end %>
+            <% unless @student.locationPreference3 == "" || @student.locationPreference3 == nil %>
+              <br><%= @student.locationPreference3 %>
+            <% end %>
+        </div>
+        <div class="level">
+            <h2>Availability:</h2>
+        </div>
+        <div class="level">
+            <%= @student.availability %>
+        </div>
+        <% unless @student.resumeLink.nil? || @student.resumeLink.empty? %>
+          <div class="level">
+            <h2>Student resume:</h2>
+          </div>
+          <div class="level">
+            <%= link_to 'Resume Link', @student.resumeLink, :class => 'btn btn-primary col-2'%>
+          </div>
+        <%end%>
+        <% unless @atype != 0 %>
+          <hr/>
+          <div class="level">
+            <div class="level-item">
+              <%= link_to 'Edit', edit_student_path(@student), :class => 'button is-success'%>
+            </div>
+            <div class="level-item">
+              <%= link_to 'Log Out', logoutredirect_path, :class => 'button is-warning'%>
+            </div>
+          </div>
+        <% end %>
     </div>
-  </li>
-  <li>
-    Additional information:
-    <%= @student.bioText %>
-  </li>
-  <li>
-    <div>
-      Location preferences:
-      <%= @student.locationPreference1 %>
-      <%= @student.locationPreference2 %>
-      <%= @student.locationPreference3 %>
-    </div>
-  </li>
-  <li>
-    <div>
-      Availability: <%= @student.availability %>
-    </div>
-  </li>
-  <li>
-    <%= @student.resumeLink %>
-  </li>
-
-</ul>
-<%= link_to 'Edit', edit_student_path(@student), :class => 'btn btn-primary col-2'%>
+</div>

@@ -33,7 +33,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '2.7.0'
+  gem 'capybara', '3.18.0'
   gem 'launchy'
   gem 'rspec-rails', '3.7.2'
 end
@@ -57,6 +57,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels' 
   gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
 end
 
 group :production do

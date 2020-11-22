@@ -1,2 +1,48 @@
-<h1>Welcome to Tindership Dashboard</h1>
+<div class="navbar is-link">
+    <div class="navbar-brand">
+        <div class="navbar-item">
+            <div class="select">
+                <select id="time">
+                    <option value="fullpart">Full and Part Time</option>
+                    <option value="part">Part Time</option>
+                    <option value="full">Full Time</option>
+                </select>
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="field has-addons">
+                <div class="control">
+                    <div class="button is-static">
+                        Location
+                    </div>
+                </div>
+                <div class="control">
+                    <input type="text" class="input" id="location">
+                </div>
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="field has-addons">
+                <div class="control">
+                    <div class="button is-static">
+                        Graduation Date
+                    </div>
+                </div>
+                <div class="control">
+                    <input type="text" class="input" id="date">
+                </div>
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="button is-success" id="search">Search</div>
+        </div>
+        <div class="navbar-item" id="logout-container">
+            <div class="button is-warning" id="logout">Logout</div>
+        </div>
+    </div>
+</div>
+<div id="cards">
 
+</div>
+
+<%= javascript_pack_tag 'dashboard' %>

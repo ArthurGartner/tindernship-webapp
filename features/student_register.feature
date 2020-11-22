@@ -12,7 +12,7 @@ Feature: Register a student account
     @javascript
     Scenario: Submit the register form (valid username/password)
         Given I am on the student register page
-        When I fill in "username" with "testregister"
+        When I fill in "username" with "testregister@citadel.edu"
         And I fill in "password" with "testregister"
         And I press "Register"
         Then I should see "New profile creation"
@@ -20,7 +20,7 @@ Feature: Register a student account
     @javascript
     Scenario: Submit the register form (username too short)
         Given I am on the student register page
-        When I fill in "username" with "a"
+        When I fill in "username" with "abc@citadel.edu"
         And I fill in "password" with "abc"
         And I press "Register"
         Then I should see "Username too short"
@@ -28,7 +28,8 @@ Feature: Register a student account
     @javascript
     Scenario: Submit the register form (password too short)
         Given I am on the student register page
-        When I fill in "username" with "abc"
+        When I fill in "username" with "abcd@citadel.edu"
         And I fill in "password" with "abc"
         And I press "Register"
         Then I should see "Password too short"
+       

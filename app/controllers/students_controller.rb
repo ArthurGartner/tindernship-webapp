@@ -62,6 +62,7 @@ class StudentsController < ApplicationController
       
     @atype = user_account.accountType
       
-    flash[:onstudent] = true;
+    rescue ActiveRecord::RecordNotFound
+    redirect_to '/', :flash => { :error => "Record not found." }
   end
 end

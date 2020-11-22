@@ -27,6 +27,8 @@ module NavigationHelpers
       '/login/student'
     when /^the student register page$/
       '/register'
+    when /^the student does not exist page$/
+      '/students/0'
     when /^the employer login page$/
       '/login/employer'
     when /^the admin login page$/

@@ -9,13 +9,13 @@ class StudentsController < ApplicationController
     @student = Student.find params[:id]
 
     user_session = Session.find_by(sessionhash: session[:hash])
-    user_account_id = user_session.accountid
+    user_account_id = user_session.account_id
     user_account = Account.find(user_account_id)
 
     student_account = Student.find(params[:id])
     #puts "Student ID: #{student_account.id}"
 
-    if student_account.id != user_account.accountId
+    if student_account.id != user_account.account_id
         #puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
         redirect_to '/'
     end
@@ -44,7 +44,7 @@ class StudentsController < ApplicationController
     if user_session == nil then
       redirect_to '/' and return
     end
-    user_account_id = user_session.accountid
+    user_account_id = user_session.account_id
     user_account = Account.find(user_account_id)
     if user_account == nil then
       redirect_to '/logoutredirect'
@@ -54,8 +54,8 @@ class StudentsController < ApplicationController
       student_account = Student.find(params[:id])
       puts "Student ID: #{student_account.id}"
 
-      if student_account.id != user_account.accountId
-        puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
+      if student_account.id != user_account.account_id
+        puts "Account ID: #{user_account.account_id} for user #{user_account.username}"
         redirect_to '/' and return
       end
     end

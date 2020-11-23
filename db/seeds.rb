@@ -13,11 +13,11 @@ more_students = [
 
 more_students.each do |student|
   newStudent = Student.create!(student)
-  Account.create!(username: newStudent.firstName + newStudent.lastName, password: "password", accountType: 0, accountId: newStudent.id)
+  Account.create!(username: newStudent.firstName + newStudent.lastName, password: "password", accountType: 0, account_id: newStudent.id)
 end
 
 Account.create!(username: "", password:"employer", accountType: 1)
 Account.create!(username: "", password: "admin", accountType: 2)
 
 newstudent = Student.create!(availability: 'Part time', firstName: "Homer", lastName: "Simpson", locationPreference1: "Springfield")
-Account.create!(username: "testaccount", password: "testaccount", accountType: 0, accountId: newstudent.id)
+Account.create!(username: "testaccount", password: "testaccount", accountType: 0, account_id: newstudent.id)

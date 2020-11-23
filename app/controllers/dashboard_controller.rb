@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
       redirect_to '/'
       return
     end
-    user_account_id = user_session.accountid
+    user_account_id = user_session.account_id
     user_account = Account.find(user_account_id)
 
     if user_account == nil || (user_account.accountType != 1 && user_account.accountType != 2)

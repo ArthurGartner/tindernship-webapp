@@ -5,11 +5,11 @@ class LoginController < ApplicationController
       if session[:hash]
         user_session = Session.find_by(sessionhash: session[:hash])
         if user_session != nil
-            user_account_id = user_session.accountid
+            user_account_id = user_session.account_id
             user_account = Account.find(user_account_id)
             if user_account != nil
                 if user_account.accountType == 0
-                    student_account = Student.find(user_account.accountId)
+                    student_account = Student.find(user_account.account_id)
                     redirect_to student_path(student_account) and return  
                 end
                 

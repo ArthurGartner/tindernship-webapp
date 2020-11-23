@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-
 gem 'jquery-datatables'
 gem 'bulma-rails', '~> 0.9.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -17,6 +16,8 @@ gem 'sass-rails', '~> 5'
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+
+gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production

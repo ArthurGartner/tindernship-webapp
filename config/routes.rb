@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'admin/delete'
-  get 'admin/reset'
+  post 'admin/delete'
+  post 'admin/reset'
   get 'admin/index'
   get 'dashboard/index'
   get 'dashboard', to: 'dashboard#index'

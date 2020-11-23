@@ -6,8 +6,8 @@ describe StudentsController, type: 'controller' do
             it 'responds to the edit route' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 1)
-                session = double('session', :accountid => 1)
+                account = double('account', :account_id => 1)
+                session = double('session', :account_id => 1)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session
@@ -18,8 +18,8 @@ describe StudentsController, type: 'controller' do
             it 'does not allow other accounts to edit' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 2, :username => "test")
-                session = double('session', :accountid => 2)
+                account = double('account', :account_id => 2, :username => "test")
+                session = double('session', :account_id => 2)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session
@@ -30,8 +30,8 @@ describe StudentsController, type: 'controller' do
             it 'assigns student to the template' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 1)
-                session = double('session', :accountid => 1)
+                account = double('account', :account_id => 1)
+                session = double('session', :account_id => 1)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session
@@ -47,8 +47,8 @@ describe StudentsController, type: 'controller' do
             it 'assigns months to the template' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 1)
-                session = double('session', :accountid => 1)
+                account = double('account', :account_id => 1)
+                session = double('session', :account_id => 1)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session
@@ -65,8 +65,8 @@ describe StudentsController, type: 'controller' do
             it 'assigns years to the template' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 1)
-                session = double('session', :accountid => 1)
+                account = double('account', :account_id => 1)
+                session = double('session', :account_id => 1)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session
@@ -81,8 +81,8 @@ describe StudentsController, type: 'controller' do
             it 'Shows student information to authorized student' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 1, :accountType => 0)
-                session = double('session', :accountid => 1)
+                account = double('account', :account_id => 1, :accountType => 0)
+                session = double('session', :account_id => 1)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session
@@ -93,8 +93,8 @@ describe StudentsController, type: 'controller' do
             it 'Assigns student to the template' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 1, :accountType => 0)
-                session = double('session', :accountid => 1)
+                account = double('account', :account_id => 1, :accountType => 0)
+                session = double('session', :account_id => 1)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session
@@ -107,8 +107,8 @@ describe StudentsController, type: 'controller' do
             it 'Does not show student information to other students' do
                 student = double('student', :id => 1, :firstName => "John", :lastName => "Doe", :graduationMonth => "June", :graduationYear => 2022, :bioText => "test",
                 :locationPreference1 => "", :locationPreference2 => "", :locationPreference3 => "", :availability => "Full time", :resumeLink => "www.google.com")
-                account = double('account', :accountId => 2, :username => "test", :accountType => 0)
-                session = double('session', :accountid => 2)
+                account = double('account', :account_id => 2, :username => "test", :accountType => 0)
+                session = double('session', :account_id => 2)
                 allow(Student).to receive(:find).and_return student
                 allow(Account).to receive(:find).and_return account
                 allow(Session).to receive(:find_by).and_return session

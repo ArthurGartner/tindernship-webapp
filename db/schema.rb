@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2020_11_17_023800) do
     t.string "resumeLink"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "student_id"
   end
 
 end

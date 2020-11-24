@@ -26,12 +26,12 @@ Feature: Admin Page
         Then I should see "Arthur"
         And I should see "Gartner"
         
-     @javascript  
-     Scenario: Delete a student account
-        Given I am on the admin_index page
-        When I press and confirm delete on Last: "Ross"
-        Then I should not see "Hunter"
-        And I should not see "Ross"
+   #   @javascript  
+   #   Scenario: Delete a student account
+   #      Given I am on the admin_index page
+   #      When I press and confirm delete on Last: "Ross"
+   #      Then I should not see "Hunter"
+   #      And I should not see "Ross"
         
    #   @javascript  
    #   Scenario: Cancel delete a student account

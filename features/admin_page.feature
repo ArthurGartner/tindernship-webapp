@@ -33,12 +33,12 @@ Feature: Admin Page
         Then I should not see "Hunter"
         And I should not see "Ross"
         
-     @javascript  
-     Scenario: Cancel delete a student account
-        Given I am on the admin_index page
-        When I press and cancel delete on Last: "Peck"
-        Then I should see "Paige"
-        And I should see "Peck"
+   #   @javascript  
+   #   Scenario: Cancel delete a student account
+   #      Given I am on the admin_index page
+   #      When I press and cancel delete on Last: "Peck"
+   #      Then I should see "Paige"
+   #      And I should see "Peck"
     
    
 #     Scenario: Reset an employer password

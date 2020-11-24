@@ -25,9 +25,4 @@ class AdminController < ApplicationController
   def reset    
 #       redirect_to admin_index_path
   end
-    
-  def logout
-    session.delete(:hash)
-    redirect_to homepage_path
-  end
 end

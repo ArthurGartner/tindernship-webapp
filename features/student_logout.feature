@@ -7,7 +7,7 @@ Feature: Clear session cookies upon logout
         Given the student test account is created
 
     @javascript
-    Scenario: Student is redirected to profile page from index
+    Scenario: Student is redirected to index after logout
         Given I go to the student login page
         When I fill in "username" with "testaccount@citadel.edu"
         And I fill in "password" with "testaccount"

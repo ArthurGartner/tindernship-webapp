@@ -25,6 +25,15 @@ Feature: Admin Page
         And I should see "Ferrer"
         Then I should see "Arthur"
         And I should see "Gartner"
+
+      @javascript
+      Scenario: Admin is redirected to index after logout
+        Given the admin account is created
+        Given I am on the admin login page
+        When I fill in "password" with "admin"
+        And I press "Login"
+        Then I follow "Log Out"
+        Then I should see "Tindernship"
         
    #   @javascript  
    #   Scenario: Delete a student account

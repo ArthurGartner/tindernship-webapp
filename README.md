@@ -42,7 +42,7 @@ Things you may want to cover:
 
 * ...
 
-[Travis CI](https://travis-ci.org/CitadelCS/tindernship) is currently failing on all builds. Currently it is failing due to a Webpacker error that was resolved on our own code base, but hasn't been resolved in the travis environment. There has been some research into fixing this, but as it takes roughly an hour to see if a fix works, time ran out on getting it up and running. The travis.yml file is where the fix will most likely need to be done. Some links that I would recommend starting to get it fixed would be as follows: 
+[Travis CI](https://travis-ci.org/CitadelCS/tindernship) is currently failing on all builds. Currently it is failing due to a Webpacker error that was resolved on our own code base, but hasn't been resolved in the travis environment. There has been some research into fixing this, but as it takes roughly an hour to see if a fix works, time ran out on getting it up and running. The travis.yml file is where the fix will most likely need to be done. Some links that I would recommend looking at when starting to get it fixed would be the following: 
 
 * [Travis CI: Building a JavaScript and Node.js project](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/)
 

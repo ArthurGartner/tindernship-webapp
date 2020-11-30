@@ -52,8 +52,6 @@ class LoginController < ApplicationController
         if account == nil || !account.authenticate(password)
             render json: {msg: "Invalid username or password"}
         else
-            puts "Account accountId at POST: #{account.account_id}"
-            puts "Account account.id at POST: #{account.id}"
             hash = createSession(account.id)
             session[:hash] = hash
             student = Student.find_by(id: account.account_id)

@@ -7,16 +7,15 @@ class StudentsController < ApplicationController
 
   def edit
     @student = Student.find params[:id]
-
+    
+    # Verifies the logged in student can only edit their profile
     user_session = Session.find_by(sessionhash: session[:hash])
     user_account_id = user_session.account_id
     user_account = Account.find(user_account_id)
-
     student_account = Student.find(params[:id])
-    #puts "Student ID: #{student_account.id}"
 
+    # If current logged in student tries to edit another page - will be redirected to home page.
     if student_account.id != user_account.account_id
-        #puts "Account ID: #{user_account.accountId} for user #{user_account.username}"
         redirect_to '/'
     end
 
@@ -39,23 +38,27 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find params[:id]
-
+    
+    # Verifies the logged in student can only view their profile
     user_session = Session.find_by(sessionhash: session[:hash])
+    
+    # If no user session is present then user will be redirected to home page.  
     if user_session == nil then
       redirect_to '/' and return
     end
+        
     user_account_id = user_session.account_id
     user_account = Account.find(user_account_id)
     if user_account == nil then
       redirect_to '/logoutredirect'
     end
-
+    
+    # Check to see if accountType == 0, which is type for student account.
     if user_account.accountType == 0
       student_account = Student.find(params[:id])
-      puts "Student ID: #{student_account.id}"
 
-      if student_account.id != user_account.account_id
-        puts "Account ID: #{user_account.account_id} for user #{user_account.username}"
+    # If current logged in student tries to view another page - will be redirected to home page. 
+    if student_account.id != user_account.account_id
         redirect_to '/' and return
       end
     end

@@ -84,6 +84,7 @@ class LoginController < ApplicationController
         # Usernames stored in lowercase to prevent similar usernames
         user = Account.where("lower(username) = ?", username.downcase)
         
+        #Check if the user is present. If it is, return with a json message saying that the username has already been created. 
         if user.present? 
             render json: {msg: "An account with username \"#{username}\" has already been created."}
             return

@@ -13,12 +13,16 @@ $("#logout").on("click", function() {
     })
 })
 
+
+// Process search
 $("#search").on("click", function() {
     let times = $("#time").val();
     let location = $("#location").val().trim().toLowerCase();
     let grad = $("#date").val().trim().toLowerCase();
 
+    // Get a list of all students
     let students = [...global_students];
+    // Filter the array
     students = students.filter(function(s) {
         if ((s.availability == null || s.availability == "Part time") && times == "full") {
             return false;
@@ -26,6 +30,7 @@ $("#search").on("click", function() {
         if ((s.availability == null || s.availability == "Full time") && times == "part") {
             return false;
         }
+        // Check location preferences
         if (location.length > 0) {
             let found = false;
             if (s.locationPreference1 && s.locationPreference1.toLowerCase().includes(location)) {
@@ -41,8 +46,10 @@ $("#search").on("click", function() {
                 return false;
             }
         }
+        // Check graduation time
         if (grad.length > 0) {
             let gtime = "";
+            // Add month if there, add year if there and fit to what it looks like in DB
             if (s.graduationMonth) {
                 gtime += s.graduationMonth.toLowerCase();
             }
@@ -58,11 +65,14 @@ $("#search").on("click", function() {
         }
         return true;
     });
+    // Build cards
     populate(students);
 });
 
+// Build card
 function buildCard(student) {
     let biotext = "";
+    // Shorten biotext if too long
     if (!!student.bioText) {
         biotext = student.bioText;
         if (biotext.length > 200) {
@@ -93,6 +103,7 @@ function buildCard(student) {
     return card;
 }
 
+// Figure out dimensions and build cards and append to dom tree
 function populate(students) {
     $("#cards").html("");
     let width = $(document).width();

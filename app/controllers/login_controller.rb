@@ -2,6 +2,7 @@ require 'digest'
 
 class LoginController < ApplicationController
     def index
+      # If there is a hash in the session, redirect to the correct path
       if session[:hash]
         user_session = Session.find_by(sessionhash: session[:hash])
         if user_session != nil
@@ -39,6 +40,7 @@ class LoginController < ApplicationController
     end
 
     def createSession accountid
+        # Create a hash for the session so that it's unique
         hash = Digest::MD5.hexdigest(SecureRandom.uuid)
         Session.create(sessionhash: hash, account_id: accountid, logintime: Time.now.getutc)
         hash
@@ -49,6 +51,7 @@ class LoginController < ApplicationController
         password = params[:password] || ""
         account = Account.find_by(username: username)
 
+        # Find account and student model
         if account == nil || !account.authenticate(password)
             render json: {msg: "Invalid username or password"}
         else
@@ -72,15 +75,15 @@ class LoginController < ApplicationController
             render json: {msg:"Username too short"}
             return
         end
+        # Ensure citadel email is used
         if username !~ /@citadel.edu$/i
           render json: {msg:"A valid Citadel email must be used for the username"}
           return
         end
         
-        #Search database for the username to see if it already exists
+        # Usernames stored in lowercase to prevent similar usernames
         user = Account.where("lower(username) = ?", username.downcase)
         
-        #Check if the user is present. If it is, return with a json message saying that the username has already been created. 
         if user.present? 
             render json: {msg: "An account with username \"#{username}\" has already been created."}
             return
@@ -90,6 +93,7 @@ class LoginController < ApplicationController
             render json: {msg:"Password too short"}
             return
         end
+        # Create account and student model
         student = Student.create(availability: 'Part time')
         account = Account.create(username: username, password: password, accountType: 0, account_id: student.id)
         hash = createSession account.id

@@ -50,6 +50,8 @@ Feature: Admin Page
    #      And I should see "Peck"
     
    
+# TODO(view employers and password resets)
+
 #     Scenario: Reset an employer password
 #         Given I am on the admin page
 #         When I press "Reset Password" on "EmployerTest"

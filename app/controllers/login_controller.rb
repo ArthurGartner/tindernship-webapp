@@ -34,11 +34,13 @@ class LoginController < ApplicationController
     def admin
     end
 
+    #Method to wipe session and return to root
     def logout
       session.delete(:hash)
       redirect_to homepage_path
     end
 
+    #Create session hash
     def createSession accountid
         # Create a hash for the session so that it's unique
         hash = Digest::MD5.hexdigest(SecureRandom.uuid)

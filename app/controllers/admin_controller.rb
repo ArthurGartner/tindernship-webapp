@@ -22,6 +22,7 @@ class AdminController < ApplicationController
       redirect_to admin_index_path
   end
 
+  # (TODO: password reset)
   def reset    
 #       redirect_to admin_index_path
   end
